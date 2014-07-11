@@ -10,13 +10,20 @@ var mongoose = require('mongoose'),
  * Post Schema
  */
 var PostSchema = new Schema({
-	name: {
+	title: {
 		type: String,
 		default: '',
-		required: 'Please fill Post name',
+		required: 'Please fill Post title',
 		trim: true
 	},
-	created: {
+    // calling the body post_body because just body is a pretty common string
+    post_body: {
+        type: String,
+        default: '',
+        required: 'Please fill Post body',
+        trim: true
+    },
+    created: {
 		type: Date,
 		default: Date.now
 	},

@@ -1,6 +1,6 @@
 <section data-ng-controller="PostsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="post.name"></h1>
+		<h1 data-ng-bind="post.title"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == post.user._id">
 		<a class="btn btn-primary" href="/#!/posts/{{post._id}}/edit">
@@ -10,6 +10,10 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+    <div class="text-left">
+        <p data-ng-bind="post.post_body">
+        </p>
+    </div>
 	<small>
 		<em class="text-muted">
 			Posted on

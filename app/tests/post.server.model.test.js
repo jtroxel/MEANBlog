@@ -45,8 +45,9 @@ describe('Post Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			post.name = '';
+		it('should be able to show an error when try to save without name', function(done) {
+            post.title = '';
+            post.text = '';
 
 			return post.save(function(err) {
 				should.exist(err);

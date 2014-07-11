@@ -9,7 +9,8 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 		$scope.create = function() {
 			// Create new Post object
 			var post = new Posts ({
-				name: this.name
+                title: this.title,
+                post_body: this.post_body
 			});
 
 			// Redirect after save
@@ -20,7 +21,8 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			});
 
 			// Clear form fields
-			this.name = '';
+            this.title = '';
+            this.post_body = '';
 		};
 
 		// Remove existing Post
