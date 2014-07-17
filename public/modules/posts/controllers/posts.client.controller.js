@@ -21,8 +21,8 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			});
 
 			// Clear form fields
-            this.title = '';
-            this.post_body = '';
+//            this.title = '';
+//            this.post_body = '';
 		};
 
 		// Remove existing Post
