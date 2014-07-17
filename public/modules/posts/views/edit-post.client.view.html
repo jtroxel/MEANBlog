@@ -18,8 +18,12 @@
                 <div class="form-group">
                     <input type="submit" value="Update" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
+				<div class="text-danger">
+                    <ul>
+                        <li ng-repeat="error in errors">
+                            {{error}}
+                        </li>
+                    </ul>
 				</div>
             </fieldset>
         </form>

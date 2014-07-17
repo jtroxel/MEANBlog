@@ -11,24 +11,24 @@ var mongoose = require('mongoose'),
  * Get the error message from error object
  */
 var getErrorMessage = function(err) {
-	var message = '';
+	var messages = [];
 
 	if (err.code) {
 		switch (err.code) {
 			case 11000:
 			case 11001:
-				message = 'Post already exists';
+				messages.push('Post already exists');
 				break;
 			default:
-				message = 'Something went wrong';
+				messages.push('Something went wrong');
 		}
 	} else {
 		for (var errName in err.errors) {
-			if (err.errors[errName].message) message = err.errors[errName].message;
+			if (err.errors[errName].message) messages.push(err.errors[errName].message);
 		}
 	}
 
-	return message;
+	return messages;
 };
 
 /**
@@ -41,7 +41,7 @@ exports.create = function(req, res) {
 	post.save(function(err) {
 		if (err) {
 			return res.send(400, {
-				message: getErrorMessage(err)
+				messages: getErrorMessage(err)
 			});
 		} else {
 			res.jsonp(post);
@@ -67,7 +67,7 @@ exports.update = function(req, res) {
 	post.save(function(err) {
 		if (err) {
 			return res.send(400, {
-				message: getErrorMessage(err)
+				messages: getErrorMessage(err)
 			});
 		} else {
 			res.jsonp(post);
@@ -84,7 +84,7 @@ exports.delete = function(req, res) {
 	post.remove(function(err) {
 		if (err) {
 			return res.send(400, {
-				message: getErrorMessage(err)
+				messages: getErrorMessage(err)
 			});
 		} else {
 			res.jsonp(post);
@@ -98,7 +98,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) { Post.find().sort('-created').populate('user', 'displayName').exec(function(err, posts) {
 		if (err) {
 			return res.send(400, {
-				message: getErrorMessage(err)
+				messages: getErrorMessage(err)
 			});
 		} else {
 			res.jsonp(posts);

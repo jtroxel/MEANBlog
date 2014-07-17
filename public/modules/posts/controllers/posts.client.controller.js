@@ -17,7 +17,7 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			post.$save(function(response) {
 				$location.path('posts/' + response._id);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				$scope.errors = errorResponse.data.messages;
 			});
 
 			// Clear form fields
@@ -48,7 +48,7 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			post.$update(function() {
 				$location.path('posts/' + post._id);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				$scope.errors = errorResponse.data.messages;
 			});
 		};
 
